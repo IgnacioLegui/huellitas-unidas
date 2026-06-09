@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Catálogo de mascotas en adopción — Huellitas Unidas. Filtrá por especie, tamaño, edad y compatibilidad.">
+  <title>Catálogo de mascotas — Huellitas Unidas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-huellitas" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html" aria-label="Huellitas Unidas — Inicio">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
+            <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+          </svg>
+          Huellitas Unidas
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto gap-1">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link active" href="catalogo.html" aria-current="page">Catálogo</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#como-funciona">Cómo adoptar</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#refugios">Refugios</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+            <a href="login.html" class="btn btn-coral btn-sm px-3">Ingresar</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <!-- HEADER -->
+    <section class="catalogo-header" aria-labelledby="catalogo-heading">
+      <div class="container">
+        <h1 id="catalogo-heading">Catálogo de mascotas</h1>
+        <p class="text-muted mb-2">Encontrá a tu compañero ideal entre todas nuestras mascotas disponibles.</p>
+        <span class="contador-badge" id="contador-mascotas" aria-live="polite">24 mascotas disponibles</span>
+      </div>
+    </section>
+
+    <!-- FILTROS MOBILE -->
+    <section class="d-lg-none py-3 border-bottom bg-white" aria-label="Filtros rápidos">
+      <div class="container">
+        <div class="filtros-mobile d-flex flex-wrap gap-2">
+          <div class="flex-fill" style="min-width:130px">
+            <label for="filtro-especie-mobile" class="visually-hidden">Especie</label>
+            <select id="filtro-especie-mobile" class="form-select form-select-sm" aria-label="Filtrar por especie">
+              <option value="">Especie</option>
+              <option value="perro">Perro</option>
+              <option value="gato">Gato</option>
+              <option value="otro">Otro</option>
+            </select>
+          </div>
+          <div class="flex-fill" style="min-width:120px">
+            <label for="filtro-tamano-mobile" class="visually-hidden">Tamaño</label>
+            <select id="filtro-tamano-mobile" class="form-select form-select-sm" aria-label="Filtrar por tamaño">
+              <option value="">Tamaño</option>
+              <option value="pequeno">Pequeño</option>
+              <option value="mediano">Mediano</option>
+              <option value="grande">Grande</option>
+            </select>
+          </div>
+          <div class="flex-fill" style="min-width:110px">
+            <label for="filtro-edad-mobile" class="visually-hidden">Edad</label>
+            <select id="filtro-edad-mobile" class="form-select form-select-sm" aria-label="Filtrar por edad">
+              <option value="">Edad</option>
+              <option value="cachorro">Cachorro</option>
+              <option value="adulto">Adulto</option>
+              <option value="senior">Senior</option>
+            </select>
+          </div>
+          <div class="flex-fill" style="min-width:150px">
+            <label for="filtro-compat-mobile" class="visually-hidden">Compatibilidad</label>
+            <select id="filtro-compat-mobile" class="form-select form-select-sm" aria-label="Filtrar por compatibilidad">
+              <option value="">Compatibilidad</option>
+              <option value="ninos">Apto niños</option>
+              <option value="mascotas">Con otras mascotas</option>
+              <option value="departamento">Apto depto.</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTENIDO PRINCIPAL -->
+    <div class="container py-4">
+      <div class="row g-4">
+
+        <!-- SIDEBAR FILTROS (desktop) -->
+        <aside class="col-lg-3 d-none d-lg-block" aria-label="Filtros de búsqueda">
+          <div class="filtros-sidebar sticky-top" style="top:80px">
+            <div class="filtro-titulo">Filtrar mascotas</div>
+
+            <div class="filtro-section">
+              <label for="filtro-especie" class="form-label">Especie</label>
+              <select id="filtro-especie" class="form-select form-select-sm" aria-label="Filtrar por especie">
+                <option value="">Todas las especies</option>
+                <option value="perro">Perro</option>
+                <option value="gato">Gato</option>
+                <option value="otro">Otro</option>
+              </select>
+            </div>
+
+            <div class="filtro-section">
+              <label for="filtro-tamano" class="form-label">Tamaño</label>
+              <select id="filtro-tamano" class="form-select form-select-sm" aria-label="Filtrar por tamaño">
+                <option value="">Todos los tamaños</option>
+                <option value="pequeno">Pequeño (hasta 10 kg)</option>
+                <option value="mediano">Mediano (10–25 kg)</option>
+                <option value="grande">Grande (más de 25 kg)</option>
+              </select>
+            </div>
+
+            <div class="filtro-section">
+              <label for="filtro-edad" class="form-label">Edad</label>
+              <select id="filtro-edad" class="form-select form-select-sm" aria-label="Filtrar por edad">
+                <option value="">Cualquier edad</option>
+                <option value="cachorro">Cachorro (0–1 año)</option>
+                <option value="adulto">Adulto (1–7 años)</option>
+                <option value="senior">Senior (7+ años)</option>
+              </select>
+            </div>
+
+            <div class="filtro-section">
+              <p class="form-label mb-2">Compatibilidad</p>
+              <fieldset>
+                <legend class="visually-hidden">Filtrar por compatibilidad</legend>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="checkbox" id="compat-ninos" value="ninos">
+                  <label class="form-check-label" for="compat-ninos">Apto con niños</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="checkbox" id="compat-mascotas" value="mascotas">
+                  <label class="form-check-label" for="compat-mascotas">Con otras mascotas</label>
+                </div>
+                <div class="form-check mb-1">
+                  <input class="form-check-input" type="checkbox" id="compat-depto" value="departamento">
+                  <label class="form-check-label" for="compat-depto">Apto departamento</label>
+                </div>
+                <div class="form-check">
+                  <input class="form-check-input" type="checkbox" id="compat-tranquilo" value="tranquilo">
+                  <label class="form-check-label" for="compat-tranquilo">Carácter tranquilo</label>
+                </div>
+              </fieldset>
+            </div>
+
+            <button id="btn-limpiar-filtros" type="button" class="btn btn-outline-coral btn-sm w-100 mt-2">
+              Limpiar filtros
+            </button>
+          </div>
+        </aside>
+
+        <!-- GRID -->
+        <section class="col-lg-9" aria-labelledby="resultados-heading">
+          <h2 class="visually-hidden" id="resultados-heading">Resultados de búsqueda</h2>
+
+          <div class="row row-cols-2 row-cols-md-2 row-cols-xl-3 g-3" id="grid-mascotas">
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/luna.jpg" class="card-img-top" alt="Luna, perra mediana" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Luna</h3>
+                  <p class="text-muted small mb-2">Perro · 2 años · Mediano</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunada</span>
+                    <span class="badge-comportamiento">Apto niños</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/michi.jpg" class="card-img-top" alt="Michi, gato pequeño" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Michi</h3>
+                  <p class="text-muted small mb-2">Gato · 1 año · Pequeño</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunado</span>
+                    <span class="badge-comportamiento">Tranquilo</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/rocky.jpg" class="card-img-top" alt="Rocky, perro grande" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Rocky</h3>
+                  <p class="text-muted small mb-2">Perro · 3 años · Grande</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunado</span>
+                    <span class="badge-salud">Desparasitado</span>
+                    <span class="badge-comportamiento">Sociable</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/nala.jpg" class="card-img-top" alt="Nala, gata cachorra" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Nala</h3>
+                  <p class="text-muted small mb-2">Gata · 4 meses · Pequeña</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunada</span>
+                    <span class="badge-comportamiento">Apto niños</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/simba.jpg" class="card-img-top" alt="Simba, gato adulto" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Simba</h3>
+                  <p class="text-muted small mb-2">Gato · 5 años · Mediano</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Castrado</span>
+                    <span class="badge-comportamiento">Tranquilo</span>
+                    <span class="badge-comportamiento">Sociable</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/trufa.jpg" class="card-img-top" alt="Trufa, perra pequeña" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Trufa</h3>
+                  <p class="text-muted small mb-2">Perra · 4 años · Pequeña</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunada</span>
+                    <span class="badge-salud">Castrada</span>
+                    <span class="badge-comportamiento">Apto depto.</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/bono.jpg" class="card-img-top" alt="Bono, perro grande adulto" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Bono</h3>
+                  <p class="text-muted small mb-2">Perro · 6 años · Grande</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunado</span>
+                    <span class="badge-comportamiento">Sociable</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/cleo.jpg" class="card-img-top" alt="Cleo, gata cachorra" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Cleo</h3>
+                  <p class="text-muted small mb-2">Gata · 3 meses · Pequeña</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunada</span>
+                    <span class="badge-comportamiento">Apto niños</span>
+                    <span class="badge-comportamiento">Juguetona</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+            <div class="col">
+              <article class="pet-card card h-100">
+                <img src="../assets/img/max.jpg" class="card-img-top" alt="Max, perro mediano" style="height:200px;object-fit:cover;">
+                <div class="card-body d-flex flex-column">
+                  <h3 class="card-title">Max</h3>
+                  <p class="text-muted small mb-2">Perro · 2 años · Mediano</p>
+                  <div class="badges-row">
+                    <span class="badge-salud">Vacunado</span>
+                    <span class="badge-salud">Castrado</span>
+                    <span class="badge-comportamiento">Apto niños</span>
+                  </div>
+                  <a href="ficha.html" class="btn btn-coral btn-sm mt-auto">Ver perfil</a>
+                </div>
+              </article>
+            </div>
+
+          </div>
+
+          <!-- PAGINACIÓN -->
+          <nav class="mt-4 d-flex justify-content-center" aria-label="Paginación del catálogo">
+            <ul class="pagination">
+              <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1" aria-label="Anterior">‹</a></li>
+              <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><span class="page-link" aria-hidden="true">…</span></li>
+              <li class="page-item"><a class="page-link" href="#">8</a></li>
+              <li class="page-item"><a class="page-link" href="#" aria-label="Siguiente">›</a></li>
+            </ul>
+          </nav>
+
+        </section>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-huellitas" role="contentinfo">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="footer-brand">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+            </svg>
+            Huellitas Unidas
+          </div>
+          <p class="footer-tagline">Plataforma de adopción responsable de mascotas en Argentina.</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h2 class="h6">Navegar</h2>
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="../index.html#como-funciona">Cómo adoptar</a></li>
+            <li><a href="../index.html#refugios">Refugios</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <p class="footer-copyright">&copy; 2026 Huellitas Unidas · Proyecto académico UADE — Diseño y Desarrollo Web</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

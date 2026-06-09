@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Mensajes del refugio — Panel Huellitas Unidas.">
+  <title>Mensajes — Panel del refugio · Huellitas Unidas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+  <style>
+    /* Layout bandeja de mensajes */
+    .mensajes-layout {
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 0;
+      background: #fff;
+      border-radius: var(--radius-lg);
+      border: 1px solid #eee;
+      box-shadow: var(--shadow-sm);
+      overflow: hidden;
+      min-height: 520px;
+    }
+    @media (max-width: 991.98px) {
+      .mensajes-layout { grid-template-columns: 1fr; }
+      .mensaje-preview { display: none; }
+      .mensajes-layout.show-preview .mensaje-lista { display: none; }
+      .mensajes-layout.show-preview .mensaje-preview { display: flex; }
+    }
+
+    /* Lista de conversaciones */
+    .mensaje-lista {
+      border-right: 1px solid #f0f0f0;
+      overflow-y: auto;
+    }
+    .mensaje-lista-header {
+      padding: 1rem 1.25rem;
+      border-bottom: 1px solid #f0f0f0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #fff;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+    .mensaje-item {
+      padding: .9rem 1.25rem;
+      border-bottom: 1px solid #f8f8f8;
+      cursor: pointer;
+      transition: background-color .15s;
+      display: flex;
+      gap: .75rem;
+      align-items: flex-start;
+      text-decoration: none;
+      color: inherit;
+    }
+    .mensaje-item:hover { background-color: #FAFAFA; }
+    .mensaje-item.activo { background-color: var(--color-primary-light); }
+    .mensaje-item.no-leido { border-left: 3px solid var(--color-primary); }
+
+    .mensaje-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: var(--color-primary-light);
+      color: var(--color-primary);
+      font-weight: 700;
+      font-size: .9rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-family: var(--font-heading);
+    }
+    .mensaje-item.activo .mensaje-avatar { background: var(--color-primary); color: #fff; }
+
+    .mensaje-remitente {
+      font-weight: 600;
+      font-size: .9rem;
+      color: #222;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .mensaje-fecha { font-size: .75rem; color: #aaa; font-weight: 400; }
+    .mensaje-asunto { font-size: .83rem; color: #555; margin-bottom: .15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .mensaje-preview-text { font-size: .8rem; color: #aaa; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; max-width: 200px; }
+    .mensaje-unread-dot { width: 8px; height: 8px; background: var(--color-primary); border-radius: 50%; flex-shrink: 0; margin-top: 6px; }
+
+    /* Panel de lectura */
+    .mensaje-preview {
+      display: flex;
+      flex-direction: column;
+    }
+    .preview-header {
+      padding: 1.25rem 1.5rem;
+      border-bottom: 1px solid #f0f0f0;
+    }
+    .preview-asunto {
+      font-family: var(--font-heading);
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: #222;
+      margin-bottom: .5rem;
+    }
+    .preview-meta {
+      font-size: .83rem;
+      color: #888;
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem 1.25rem;
+    }
+    .preview-body {
+      padding: 1.5rem;
+      flex: 1;
+      overflow-y: auto;
+      font-size: .93rem;
+      color: #444;
+      line-height: 1.75;
+    }
+    .preview-reply {
+      padding: 1rem 1.5rem;
+      border-top: 1px solid #f0f0f0;
+      background: #FAFAFA;
+    }
+    .preview-reply textarea {
+      width: 100%;
+      border: 1.5px solid #ddd;
+      border-radius: var(--radius-md);
+      padding: .6rem .85rem;
+      font-size: .9rem;
+      font-family: var(--font-body);
+      resize: none;
+      outline: none;
+      transition: border-color .2s;
+    }
+    .preview-reply textarea:focus { border-color: var(--color-primary); box-shadow: 0 0 0 .15rem rgba(255,111,97,.15); }
+
+    .badge-no-leido {
+      background: var(--color-primary);
+      color: #fff;
+      border-radius: var(--radius-pill);
+      font-size: .7rem;
+      padding: .1em .5em;
+      font-weight: 700;
+      margin-left: .35rem;
+    }
+  </style>
+</head>
+<body style="background-color:#F4F6F9;padding-bottom:0">
+
+  <!-- TOPBAR -->
+  <header>
+    <div class="panel-topbar" role="banner">
+      <div class="d-flex align-items-center gap-3">
+        <a href="../index.html" class="panel-brand" aria-label="Huellitas Unidas — Ir al sitio público">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+            <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+          </svg>
+          Huellitas Unidas
+        </a>
+        <span class="d-none d-sm-inline" style="color:#ddd" aria-hidden="true">|</span>
+        <span class="refugio-name d-none d-sm-inline">Refugio Patitas Felices</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white"
+             style="width:34px;height:34px;background:var(--color-primary);font-size:.85rem;flex-shrink:0"
+             aria-label="Iniciales del refugio">PF</div>
+        <a href="../index.html" class="btn btn-outline-coral btn-sm px-3 ms-1">Ver sitio</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV MOBILE -->
+  <nav class="panel-mobile-nav" aria-label="Navegación del panel">
+    <a href="panel.html" class="panel-nav-link px-3 py-2" style="font-size:.85rem">Solicitudes</a>
+    <a href="panel-mascotas.html" class="panel-nav-link px-3 py-2" style="font-size:.85rem">Mascotas</a>
+    <a href="panel-mensajes.html" class="panel-nav-link active px-3 py-2" style="font-size:.85rem" aria-current="page">Mensajes</a>
+    <a href="#" class="panel-nav-link px-3 py-2" style="font-size:.85rem">Ajustes</a>
+  </nav>
+
+  <div class="panel-wrapper">
+
+    <!-- SIDEBAR -->
+    <nav class="panel-sidebar" aria-label="Menú del panel de administración">
+      <p class="text-muted mb-3 px-2" style="font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;font-weight:700">Gestión</p>
+      <a href="panel.html" class="panel-nav-link">
+        Solicitudes
+        <span class="panel-nav-badge" aria-label="3 nuevas">3</span>
+      </a>
+      <a href="panel-mascotas.html" class="panel-nav-link">Mascotas</a>
+      <a href="panel-mensajes.html" class="panel-nav-link active" aria-current="page">
+        Mensajes
+        <span class="panel-nav-badge" aria-label="1 nuevo">1</span>
+      </a>
+      <hr style="border-color:#eee;margin:1rem .5rem">
+      <p class="text-muted mb-2 px-2" style="font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;font-weight:700">Cuenta</p>
+      <a href="#" class="panel-nav-link">Ajustes</a>
+      <a href="../index.html" class="panel-nav-link">Ver sitio público</a>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <div class="panel-content">
+
+      <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+        <div>
+          <h1 class="h4 mb-0" style="font-family:var(--font-heading)">
+            Mensajes
+            <span class="badge-no-leido" aria-label="1 mensaje no leído">1</span>
+          </h1>
+          <p class="text-muted mb-0" style="font-size:.88rem">Conversaciones con adoptantes · 7 mensajes en total</p>
+        </div>
+      </div>
+
+      <!-- BANDEJA -->
+      <div class="mensajes-layout" id="mensajes-layout" role="region" aria-label="Bandeja de mensajes">
+
+        <!-- Lista de conversaciones -->
+        <div class="mensaje-lista" role="list" aria-label="Lista de conversaciones">
+
+          <div class="mensaje-lista-header">
+            <span style="font-weight:700;font-size:.88rem;color:#333">Bandeja de entrada</span>
+            <span class="text-muted" style="font-size:.78rem">7 mensajes</span>
+          </div>
+
+          <!-- Mensaje 1 (no leído, activo) -->
+          <a href="#" class="mensaje-item no-leido activo" role="listitem" id="msg-1"
+             aria-label="Mensaje no leído de Valentina García sobre Luna" onclick="selectMessage(1, event)">
+            <div class="mensaje-avatar" aria-hidden="true">VG</div>
+            <div style="flex:1;min-width:0">
+              <div class="mensaje-remitente">
+                Valentina García
+                <span class="mensaje-fecha">Hoy 14:23</span>
+              </div>
+              <div class="mensaje-asunto">Re: Solicitud de adopción — Luna</div>
+              <div class="mensaje-preview-text">Muchas gracias por la respuesta, quisiera coordinar...</div>
+            </div>
+            <div class="mensaje-unread-dot" aria-hidden="true"></div>
+          </a>
+
+          <!-- Mensaje 2 -->
+          <a href="#" class="mensaje-item" role="listitem" id="msg-2"
+             aria-label="Mensaje de Mateo Rodríguez sobre Michi" onclick="selectMessage(2, event)">
+            <div class="mensaje-avatar" aria-hidden="true">MR</div>
+            <div style="flex:1;min-width:0">
+              <div class="mensaje-remitente">
+                Mateo Rodríguez
+                <span class="mensaje-fecha">Ayer</span>
+              </div>
+              <div class="mensaje-asunto">Consulta sobre Michi</div>
+              <div class="mensaje-preview-text">Hola, quería saber si Michi se lleva bien con...</div>
+            </div>
+          </a>
+
+          <!-- Mensaje 3 -->
+          <a href="#" class="mensaje-item" role="listitem" id="msg-3"
+             aria-label="Mensaje de Lucía Fernández sobre Nala" onclick="selectMessage(3, event)">
+            <div class="mensaje-avatar" aria-hidden="true">LF</div>
+            <div style="flex:1;min-width:0">
+              <div class="mensaje-remitente">
+                Lucía Fernández
+                <span class="mensaje-fecha">03/06</span>
+              </div>
+              <div class="mensaje-asunto">Solicitud de adopción — Nala</div>
+              <div class="mensaje-preview-text">Buenas tardes, completé el formulario de adopción...</div>
+            </div>
+          </a>
+
+          <!-- Mensaje 4 -->
+          <a href="#" class="mensaje-item" role="listitem" id="msg-4"
+             aria-label="Mensaje de Santiago López sobre Rocky" onclick="selectMessage(4, event)">
+            <div class="mensaje-avatar" aria-hidden="true">SL</div>
+            <div style="flex:1;min-width:0">
+              <div class="mensaje-remitente">
+                Santiago López
+                <span class="mensaje-fecha">02/06</span>
+              </div>
+              <div class="mensaje-asunto">Seguimiento — Rocky</div>
+              <div class="mensaje-preview-text">Les escribo para confirmar la visita del próximo...</div>
+            </div>
+          </a>
+
+          <!-- Mensaje 5 -->
+          <a href="#" class="mensaje-item" role="listitem" id="msg-5"
+             aria-label="Mensaje de Camila Suárez sobre Trufa" onclick="selectMessage(5, event)">
+            <div class="mensaje-avatar" aria-hidden="true">CS</div>
+            <div style="flex:1;min-width:0">
+              <div class="mensaje-remitente">
+                Camila Suárez
+                <span class="mensaje-fecha">31/05</span>
+              </div>
+              <div class="mensaje-asunto">Pregunta sobre Trufa</div>
+              <div class="mensaje-preview-text">Quiero saber si Trufa está bien con departamentos...</div>
+            </div>
+          </a>
+
+          <!-- Mensaje 6 -->
+          <a href="#" class="mensaje-item" role="listitem" id="msg-6"
+             aria-label="Mensaje de Tomás Herrera sobre Bono" onclick="selectMessage(6, event)">
+            <div class="mensaje-avatar" aria-hidden="true">TH</div>
+            <div style="flex:1;min-width:0">
+              <div class="mensaje-remitente">
+                Tomás Herrera
+                <span class="mensaje-fecha">28/05</span>
+              </div>
+              <div class="mensaje-asunto">Bono — fecha de entrega</div>
+              <div class="mensaje-preview-text">Buenas, quería coordinar el día de la entrega de...</div>
+            </div>
+          </a>
+
+          <!-- Mensaje 7 -->
+          <a href="#" class="mensaje-item" role="listitem" id="msg-7"
+             aria-label="Mensaje de Ana Martínez sobre Cleo" onclick="selectMessage(7, event)">
+            <div class="mensaje-avatar" aria-hidden="true">AM</div>
+            <div style="flex:1;min-width:0">
+              <div class="mensaje-remitente">
+                Ana Martínez
+                <span class="mensaje-fecha">25/05</span>
+              </div>
+              <div class="mensaje-asunto">Re: Cleo — adopción aprobada</div>
+              <div class="mensaje-preview-text">Muchísimas gracias, estamos muy emocionados...</div>
+            </div>
+          </a>
+
+        </div>
+        <!-- /mensaje-lista -->
+
+        <!-- Panel de lectura -->
+        <div class="mensaje-preview" id="mensaje-preview-panel" role="region" aria-label="Contenido del mensaje seleccionado" aria-live="polite">
+
+          <div class="preview-header">
+            <p class="preview-asunto" id="preview-asunto">Re: Solicitud de adopción — Luna</p>
+            <div class="preview-meta">
+              <span><strong>De:</strong> Valentina García &lt;vgarcia@email.com&gt;</span>
+              <span><strong>Para:</strong> Refugio Patitas Felices</span>
+              <span><strong>Fecha:</strong> Hoy, 14:23 hs</span>
+              <span><strong>Sobre:</strong> <a href="ficha.html" style="color:var(--color-primary);font-weight:600">Luna</a></span>
+            </div>
+          </div>
+
+          <div class="preview-body" id="preview-body">
+            <p>Hola, buenas tardes.</p>
+            <p>Muchas gracias por responder tan rápido. Quedé muy contenta con la revisión de mi solicitud para adoptar a Luna.</p>
+            <p>Quisiera coordinar una visita para conocerla en persona. ¿Cuáles son los horarios disponibles durante esta semana?</p>
+            <p>También tenía una consulta: ¿Luna se lleva bien con perros de tamaño similar? Tengo un perro mestizo de 3 años que es muy sociable.</p>
+            <p>Quedo a disposición. Muchas gracias nuevamente.</p>
+            <p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Valentina García<br>Buenos Aires, Argentina</p>
+          </div>
+
+          <div class="preview-reply">
+            <label for="reply-textarea" class="form-label-custom mb-2">Responder</label>
+            <textarea id="reply-textarea" rows="3" placeholder="Escribí tu respuesta..." aria-label="Escribir respuesta"></textarea>
+            <div class="d-flex justify-content-end mt-2">
+              <button type="button" class="btn btn-coral btn-sm px-4">Enviar respuesta</button>
+            </div>
+          </div>
+
+        </div>
+        <!-- /mensaje-preview -->
+
+      </div>
+      <!-- /mensajes-layout -->
+
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    'use strict';
+
+    /* Datos estáticos de mensajes */
+    const mensajes = {
+      1: {
+        asunto: 'Re: Solicitud de adopción — Luna',
+        de: 'Valentina García &lt;vgarcia@email.com&gt;',
+        fecha: 'Hoy, 14:23 hs',
+        sobre: 'Luna',
+        body: '<p>Hola, buenas tardes.</p><p>Muchas gracias por responder tan rápido. Quedé muy contenta con la revisión de mi solicitud para adoptar a Luna.</p><p>Quisiera coordinar una visita para conocerla en persona. ¿Cuáles son los horarios disponibles durante esta semana?</p><p>También tenía una consulta: ¿Luna se lleva bien con perros de tamaño similar? Tengo un perro mestizo de 3 años que es muy sociable.</p><p>Quedo a disposición. Muchas gracias nuevamente.</p><p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Valentina García<br>Buenos Aires, Argentina</p>'
+      },
+      2: {
+        asunto: 'Consulta sobre Michi',
+        de: 'Mateo Rodríguez &lt;mrodriguez@email.com&gt;',
+        fecha: 'Ayer, 10:45 hs',
+        sobre: 'Michi',
+        body: '<p>Hola, buen día.</p><p>Quería saber si Michi se lleva bien con niños pequeños. Tengo dos hijos de 4 y 7 años y me preocupa que el gato se estrese.</p><p>También pregunto si tiene alguna dieta especial o si come alimento balanceado estándar.</p><p>Gracias de antemano por la información.</p><p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Mateo Rodríguez</p>'
+      },
+      3: {
+        asunto: 'Solicitud de adopción — Nala',
+        de: 'Lucía Fernández &lt;lfernandez@email.com&gt;',
+        fecha: '03/06/2026, 18:30 hs',
+        sobre: 'Nala',
+        body: '<p>Buenas tardes.</p><p>Completé el formulario de adopción para Nala. Me encantaría poder adoptarla para mi familia.</p><p>Vivimos en una casa con patio y ya tenemos experiencia con gatos. Actualmente tenemos una gata adulta muy tranquila.</p><p>Quedamos a la espera de su respuesta. Muchas gracias.</p><p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Lucía Fernández</p>'
+      },
+      4: {
+        asunto: 'Seguimiento — Rocky',
+        de: 'Santiago López &lt;slopez@email.com&gt;',
+        fecha: '02/06/2026, 09:15 hs',
+        sobre: 'Rocky',
+        body: '<p>Buen día.</p><p>Les escribo para confirmar la visita del próximo sábado. ¿Siguen disponibles las 10:00 hs?</p><p>También quería preguntar si debo llevar algo para el día de la visita.</p><p>Muchas gracias y hasta el sábado.</p><p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Santiago López</p>'
+      },
+      5: {
+        asunto: 'Pregunta sobre Trufa',
+        de: 'Camila Suárez &lt;csuarez@email.com&gt;',
+        fecha: '31/05/2026, 20:00 hs',
+        sobre: 'Trufa',
+        body: '<p>Hola, buenas noches.</p><p>Quiero saber si Trufa está bien adaptada a vivir en departamentos. Vivo en un 3° piso con balcón y me preocupa que no tenga suficiente espacio.</p><p>Trabajo desde casa así que estaría con ella la mayor parte del día.</p><p>Gracias.</p><p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Camila Suárez</p>'
+      },
+      6: {
+        asunto: 'Bono — fecha de entrega',
+        de: 'Tomás Herrera &lt;therrera@email.com&gt;',
+        fecha: '28/05/2026, 11:30 hs',
+        sobre: 'Bono',
+        body: '<p>Buenas tardes.</p><p>Quería coordinar el día de la entrega de Bono. Me dijeron que podría ser la semana que viene.</p><p>¿Tienen disponibilidad el martes 10 de junio a la tarde?</p><p>Muchas gracias por todo el proceso.</p><p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Tomás Herrera</p>'
+      },
+      7: {
+        asunto: 'Re: Cleo — adopción aprobada',
+        de: 'Ana Martínez &lt;amartinez@email.com&gt;',
+        fecha: '25/05/2026, 16:00 hs',
+        sobre: 'Cleo',
+        body: '<p>¡Muchísimas gracias!</p><p>Estamos muy emocionados con la noticia. Toda la familia está lista para recibir a Cleo.</p><p>Confirmo que el sábado a las 11:00 hs estamos en el refugio.</p><p>Gracias por todo su trabajo y dedicación.</p><p style="margin-top:1.5rem;color:#aaa;font-size:.85rem">Ana Martínez</p>'
+      }
+    };
+
+    function selectMessage(id, e) {
+      if (e) e.preventDefault();
+
+      /* Quitar activo de todos */
+      document.querySelectorAll('.mensaje-item').forEach(i => i.classList.remove('activo'));
+      /* Poner activo al seleccionado */
+      const el = document.getElementById('msg-' + id);
+      if (el) {
+        el.classList.add('activo');
+        /* Quitar indicador de no leído */
+        el.classList.remove('no-leido');
+        const dot = el.querySelector('.mensaje-unread-dot');
+        if (dot) dot.remove();
+      }
+
+      const msg = mensajes[id];
+      if (!msg) return;
+
+      document.getElementById('preview-asunto').textContent = msg.asunto;
+      document.getElementById('preview-body').innerHTML = msg.body;
+      document.getElementById('reply-textarea').value = '';
+
+      /* Mobile: mostrar panel de lectura */
+      document.getElementById('mensajes-layout').classList.add('show-preview');
+    }
+  </script>
+</body>
+</html>
