@@ -1,0 +1,40 @@
+/* EQUIPO */
+
+Nombre: Martinez Vieira Victor
+Rol: UX Researcher
+Email: vmatinezvieira@uade.edu.ar
+
+Nombre: Martino Tiago
+Rol: UI Designer
+Email: timartino@uade.edu.ar
+
+Nombre: Nuñez Felipe
+Rol: Frontend Developer
+Email: fenunez@uade.edu.ar
+
+Nombre: Volpe Santino
+Rol: Frontend Developer
+Email: svolpe@uade.edu.ar
+
+Nombre: Leguizamon Jose Ignacio
+Rol: QA / Documentación
+GitHub: https://github.com/IgnacioLegui/
+Email: joleguizamon@uade.edu.ar
+
+/* SITIO */
+
+Nombre: Huellitas Unidas
+Descripción: Plataforma de adopción responsable de mascotas
+Versión: 1.0
+Última actualización: 2026
+Idioma: Español
+Doctype: HTML5
+Editor: Visual Studio Code
+Estándares: HTML5, CSS3, Bootstrap 5.3.8, JavaScript ES6
+
+/* AGRADECIMIENTOS */
+
+Universidad Argentina de la Empresa
+Facultad de Ingeniería y Ciencias Exactas
+Docente: Rodriguez, Ricardo Javier
+Asignatura: Diseño y Desarrollo Web - 2026

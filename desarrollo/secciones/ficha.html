@@ -1,0 +1,217 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Luna — Perra mediana en adopción. Historial de salud, comportamiento y proceso de adopción en Huellitas Unidas.">
+  <title>Luna — Ficha de adopción · Huellitas Unidas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-huellitas" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html" aria-label="Huellitas Unidas — Inicio">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
+            <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+          </svg>
+          Huellitas Unidas
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto gap-1">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link active" href="catalogo.html" aria-current="page">Catálogo</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#como-funciona">Cómo adoptar</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#refugios">Refugios</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+            <a href="login.html" class="btn btn-coral btn-sm px-3">Ingresar</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="ficha-page">
+    <div class="container">
+
+      <!-- BREADCRUMB -->
+      <nav aria-label="Ruta de navegación" class="mb-3">
+        <ol class="breadcrumb breadcrumb-custom">
+          <li class="breadcrumb-item"><a href="../index.html">Inicio</a></li>
+          <li class="breadcrumb-item"><a href="catalogo.html">Catálogo</a></li>
+          <li class="breadcrumb-item active" aria-current="page">Luna</li>
+        </ol>
+      </nav>
+
+      <div class="row g-4 g-lg-5">
+
+        <!-- GALERÍA -->
+        <div class="col-lg-7">
+          <div class="gallery-main">
+            <img src="../assets/img/luna-1.webp" class="w-100" id="foto-principal" alt="Foto principal de Luna" style="height:420px;object-fit:cover;border-radius:var(--radius-lg);">
+            <div class="gallery-overlay" aria-hidden="true">
+              <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+          </div>
+          <div class="gallery-thumbs mt-2" role="list" aria-label="Fotos adicionales de Luna">
+            <div class="gallery-thumb active" role="listitem" tabindex="0" aria-label="Foto 1 de Luna" data-img="../assets/img/luna-1.webp">
+              <img src="../assets/img/luna-1.webp" alt="Luna foto 1" style="width:100%;height:70px;object-fit:cover;border-radius:4px;">
+            </div>
+            <div class="gallery-thumb" role="listitem" tabindex="0" aria-label="Foto 2 de Luna" data-img="../assets/img/luna-2.webp">
+              <img src="../assets/img/luna-2.webp" alt="Luna foto 2" style="width:100%;height:70px;object-fit:cover;border-radius:4px;">
+            </div>
+            <div class="gallery-thumb" role="listitem" tabindex="0" aria-label="Foto 3 de Luna" data-img="../assets/img/luna-3.webp">
+              <img src="../assets/img/luna-3.webp" alt="Luna foto 3" style="width:100%;height:70px;object-fit:cover;border-radius:4px;">
+            </div>
+            <div class="gallery-thumb" role="listitem" tabindex="0" aria-label="Foto 4 de Luna" data-img="../assets/img/luna-4.webp">
+              <img src="../assets/img/luna-4.webp" alt="Luna foto 4" style="width:100%;height:70px;object-fit:cover;border-radius:4px;">
+            </div>
+          </div>
+        </div>
+
+        <!-- DATOS -->
+        <div class="col-lg-5">
+          <div class="ficha-info">
+
+            <h1 class="pet-name">Luna</h1>
+            <p class="pet-subtitle">
+              En adopción &nbsp;·&nbsp;
+              <a href="../index.html#refugios" class="text-primary-custom fw-semibold">Refugio Patitas Felices</a>
+            </p>
+
+            <div class="datos-table mb-3" role="region" aria-label="Datos de Luna">
+              <table class="table table-borderless mb-0">
+                <caption class="visually-hidden">Información básica de Luna</caption>
+                <tbody>
+                  <tr><td>Especie</td><td>Perro</td></tr>
+                  <tr><td>Raza</td><td>Mestiza</td></tr>
+                  <tr><td>Edad</td><td>2 años</td></tr>
+                  <tr><td>Tamaño</td><td>Mediano</td></tr>
+                  <tr><td>Sexo</td><td>Hembra</td></tr>
+                  <tr><td>Peso</td><td>12 kg</td></tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div class="mb-3">
+              <p class="badges-group-title">Salud</p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge-salud">Vacunada ✓</span>
+                <span class="badge-salud">Castrada ✓</span>
+                <span class="badge-salud">Desparasitada ✓</span>
+              </div>
+            </div>
+
+            <div class="mb-3">
+              <p class="badges-group-title">Comportamiento</p>
+              <div class="d-flex flex-wrap gap-2">
+                <span class="badge-comportamiento">Sociable</span>
+                <span class="badge-comportamiento">Apto niños</span>
+                <span class="badge-comportamiento">Tranquila</span>
+              </div>
+            </div>
+
+            <div class="descripcion-lead" role="region" aria-label="Descripción de Luna">
+              Luna llegó al refugio hace 8 meses después de ser encontrada en la calle. A pesar de su pasado difícil, es una perra muy cariñosa y sociable. Le encanta jugar con pelotas, correr en espacios abiertos y es excelente con niños. Se lleva bien con otros perros y aprende rápido.
+            </div>
+
+            <div class="adoption-timeline" role="region" aria-label="Proceso de adopción paso a paso">
+              <h2 class="h5">Proceso de adopción</h2>
+              <ol class="timeline-list">
+                <li class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true">1</div>
+                  <div class="timeline-content">
+                    <strong>Completá la solicitud</strong>
+                    <span>Llenás el formulario online con tus datos</span>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true">2</div>
+                  <div class="timeline-content">
+                    <strong>Revisión del refugio</strong>
+                    <span>El equipo de Patitas Felices evalúa tu solicitud en 48 hs</span>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true">3</div>
+                  <div class="timeline-content">
+                    <strong>Visita o videollamada</strong>
+                    <span>Coordinamos un encuentro para que conozcan a Luna</span>
+                  </div>
+                </li>
+                <li class="timeline-item">
+                  <div class="timeline-dot" aria-hidden="true">4</div>
+                  <div class="timeline-content">
+                    <strong>Luna va a casa</strong>
+                    <span>Firmás el acuerdo de adopción responsable</span>
+                  </div>
+                </li>
+              </ol>
+            </div>
+
+            <div class="cta-adoptar">
+              <p class="mb-2" style="font-size:.88rem;color:#666">¿Luna es la indicada para vos?</p>
+              <a href="formulario.html" class="btn btn-coral d-grid py-2 fs-6" aria-label="Iniciar solicitud de adopción de Luna">
+                Quiero adoptarla
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- CTA FIXED BOTTOM (mobile) -->
+    <div class="cta-adoptar-fixed" role="region" aria-label="Botón de adopción fijo">
+      <div class="container">
+        <a href="formulario.html" class="btn btn-coral d-block py-2 fs-6">Quiero adoptarla</a>
+      </div>
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-huellitas">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="footer-brand">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+            </svg>
+            Huellitas Unidas
+          </div>
+          <p class="footer-tagline">Plataforma de adopción responsable de mascotas en Argentina.</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h2 class="h6">Navegar</h2>
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+            <li><a href="../index.html#como-funciona">Cómo adoptar</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <p class="footer-copyright">&copy; 2026 Huellitas Unidas · Proyecto académico UADE — Diseño y Desarrollo Web</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
+
+

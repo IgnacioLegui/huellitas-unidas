@@ -1,0 +1,160 @@
+﻿<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Solicitud enviada — Tu solicitud de adopción fue recibida. El refugio te contactará en 48 horas.">
+  <title>Solicitud enviada — Huellitas Unidas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-huellitas" aria-label="Navegación principal">
+      <div class="container">
+        <a class="navbar-brand" href="../index.html" aria-label="Huellitas Unidas — Inicio">
+          <svg class="brand-icon" viewBox="0 0 24 24" fill="currentColor" width="22" height="22" aria-hidden="true">
+            <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+          </svg>
+          Huellitas Unidas
+        </a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Abrir menú de navegación">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav mx-auto gap-1">
+            <li class="nav-item"><a class="nav-link" href="../index.html">Inicio</a></li>
+            <li class="nav-item"><a class="nav-link" href="catalogo.html">Catálogo</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#como-funciona">Cómo adoptar</a></li>
+            <li class="nav-item"><a class="nav-link" href="../index.html#refugios">Refugios</a></li>
+          </ul>
+          <div class="d-flex align-items-center gap-2 mt-2 mt-lg-0">
+            <a href="login.html" class="btn btn-coral btn-sm px-3">Ingresar</a>
+          </div>
+        </div>
+      </div>
+    </nav>
+  </header>
+
+  <main class="confirmacion-page" aria-labelledby="confirmacion-heading">
+    <div class="container">
+
+      <div class="confirmacion-card" role="region" aria-live="polite">
+
+        <!-- Ícono check -->
+        <div class="check-circle" role="img" aria-label="Solicitud enviada exitosamente">
+          <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+            <polyline points="20 6 9 17 4 12"/>
+          </svg>
+        </div>
+
+        <h1 id="confirmacion-heading">Solicitud enviada</h1>
+
+        <p class="lead">
+          Tu solicitud para adoptar a <strong>Luna</strong> fue recibida correctamente por el equipo de
+          <strong>Refugio Patitas Felices</strong>.
+        </p>
+
+        <p class="text-muted mb-4" style="font-size:.95rem">
+          Te contactaremos en <strong>menos de 48 horas</strong> al correo que registraste para coordinar los próximos pasos.
+        </p>
+
+        <div class="pasos-siguientes" role="region" aria-label="Próximos pasos del proceso de adopción">
+          <h2 class="h6">¿Qué pasa ahora?</h2>
+          <ul>
+            <li>Revisá tu bandeja de entrada (y spam) por un correo de confirmación.</li>
+            <li>El equipo del refugio revisará tu solicitud en las próximas 48 horas.</li>
+            <li>Te contactarán para coordinar una visita o videollamada con Luna.</li>
+            <li>Si todo está bien, Luna viaja a su nuevo hogar con vos.</li>
+          </ul>
+        </div>
+
+        <div class="d-flex flex-column flex-sm-row gap-3 justify-content-center">
+          <a href="catalogo.html" class="btn btn-coral px-4 py-2">Volver al catálogo</a>
+          <a href="../index.html" class="btn btn-outline-coral px-4 py-2">Ir al inicio</a>
+        </div>
+
+        <p class="text-muted mt-4 mb-0" style="font-size:.8rem">
+          N.° de solicitud: <code style="background:#f5f5f5;padding:.1em .4em;border-radius:4px">#HU-2026-00847</code>
+        </p>
+
+      </div>
+
+      <!-- Sugerencias -->
+      <div class="text-center mt-5">
+        <p class="text-muted mb-3">Mientras esperás, podés seguir conociendo más mascotas:</p>
+        <div class="row g-3 justify-content-center">
+          <div class="col-6 col-md-3">
+            <article class="pet-card card h-100">
+              <img src="../assets/img/michi.webp" class="card-img-top" alt="Michi, gato pequeño" style="height:120px;object-fit:cover;">
+              <div class="card-body p-2 text-center">
+                <h3 class="card-title mb-0" style="font-size:.95rem">Michi</h3>
+                <p class="text-muted mb-1" style="font-size:.78rem">Gato · 1 año</p>
+                <a href="ficha.html" class="btn btn-outline-coral btn-sm px-2 py-1" style="font-size:.78rem">Ver perfil</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-6 col-md-3">
+            <article class="pet-card card h-100">
+              <img src="../assets/img/rocky.webp" class="card-img-top" alt="Rocky, perro grande" style="height:120px;object-fit:cover;">
+              <div class="card-body p-2 text-center">
+                <h3 class="card-title mb-0" style="font-size:.95rem">Rocky</h3>
+                <p class="text-muted mb-1" style="font-size:.78rem">Perro · 3 años</p>
+                <a href="ficha.html" class="btn btn-outline-coral btn-sm px-2 py-1" style="font-size:.78rem">Ver perfil</a>
+              </div>
+            </article>
+          </div>
+          <div class="col-6 col-md-3">
+            <article class="pet-card card h-100">
+              <img src="../assets/img/nala.webp" class="card-img-top" alt="Nala, gata cachorra" style="height:120px;object-fit:cover;">
+              <div class="card-body p-2 text-center">
+                <h3 class="card-title mb-0" style="font-size:.95rem">Nala</h3>
+                <p class="text-muted mb-1" style="font-size:.78rem">Gata · 4 meses</p>
+                <a href="ficha.html" class="btn btn-outline-coral btn-sm px-2 py-1" style="font-size:.78rem">Ver perfil</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer-huellitas mt-5">
+    <div class="container">
+      <div class="row g-4">
+        <div class="col-lg-5">
+          <div class="footer-brand">
+            <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+              <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+            </svg>
+            Huellitas Unidas
+          </div>
+          <p class="footer-tagline">Plataforma de adopción responsable de mascotas en Argentina.</p>
+        </div>
+        <div class="col-6 col-lg-3">
+          <h2 class="h6">Navegar</h2>
+          <ul>
+            <li><a href="../index.html">Inicio</a></li>
+            <li><a href="catalogo.html">Catálogo</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="footer-divider">
+      <p class="footer-copyright">&copy; 2026 Huellitas Unidas · Proyecto académico UADE — Diseño y Desarrollo Web</p>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
+
+

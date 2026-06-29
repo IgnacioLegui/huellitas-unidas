@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Panel de administración del refugio — Huellitas Unidas. Gestioná las solicitudes de adopción.">
+  <title>Solicitudes — Panel del refugio · Huellitas Unidas</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Comfortaa:wght@400;600;700&family=Open+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../assets/css/styles.css">
+</head>
+<body style="background-color:#F4F6F9;padding-bottom:0">
+
+  <!-- TOPBAR -->
+  <header>
+    <div class="panel-topbar" role="banner">
+      <div class="d-flex align-items-center gap-3">
+        <a href="../index.html" class="panel-brand" aria-label="Huellitas Unidas — Ir al sitio público">
+          <svg viewBox="0 0 24 24" fill="currentColor" width="20" height="20" aria-hidden="true">
+            <path d="M4.5 11a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm15 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM7 8a2 2 0 1 0 0-4 2 2 0 0 0 0 4zm10 0a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 22c-4 0-7-2.7-7-6 0-1.8.9-3.4 2.3-4.5C7.9 10.8 9.3 10 12 10s4.1.8 4.7 1.5C18.1 12.6 19 14.2 19 16c0 3.3-3 6-7 6z"/>
+          </svg>
+          Huellitas Unidas
+        </a>
+        <span class="d-none d-sm-inline" style="color:#ddd" aria-hidden="true">|</span>
+        <span class="refugio-name d-none d-sm-inline">Refugio Patitas Felices</span>
+      </div>
+      <div class="d-flex align-items-center gap-2">
+        <span class="d-none d-md-inline text-muted" style="font-size:.85rem">Buenos Aires</span>
+        <div class="rounded-circle d-flex align-items-center justify-content-center fw-bold text-white"
+             style="width:34px;height:34px;background:var(--color-primary);font-size:.85rem;flex-shrink:0"
+             aria-label="Iniciales del refugio: Patitas Felices">PF</div>
+        <a href="../index.html" class="btn btn-outline-coral btn-sm px-3 ms-1">Ver sitio</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- NAV MOBILE -->
+  <nav class="panel-mobile-nav" aria-label="Navegación del panel">
+    <a href="panel.html" class="panel-nav-link active px-3 py-2" style="font-size:.85rem" aria-current="page">Solicitudes</a>
+    <a href="panel-mascotas.html" class="panel-nav-link px-3 py-2" style="font-size:.85rem">Mascotas</a>
+    <a href="panel-mensajes.html" class="panel-nav-link px-3 py-2" style="font-size:.85rem">Mensajes</a>
+    <a href="panel-ajustes.html" class="panel-nav-link px-3 py-2" style="font-size:.85rem">Ajustes</a>
+  </nav>
+
+  <div class="panel-wrapper">
+
+    <!-- SIDEBAR -->
+    <nav class="panel-sidebar" aria-label="Menú del panel de administración">
+      <p class="text-muted mb-3 px-2" style="font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;font-weight:700">Gestión</p>
+      <a href="panel.html" class="panel-nav-link active" aria-current="page">Solicitudes</a>
+      <a href="panel-mascotas.html" class="panel-nav-link">Mascotas</a>
+      <a href="panel-mensajes.html" class="panel-nav-link">Mensajes</a>
+      <hr style="border-color:#eee;margin:1rem .5rem">
+      <p class="text-muted mb-2 px-2" style="font-size:.75rem;text-transform:uppercase;letter-spacing:.07em;font-weight:700">Cuenta</p>
+      <a href="panel-ajustes.html" class="panel-nav-link">Ajustes</a>
+      <a href="../index.html" class="panel-nav-link">Ver sitio público</a>
+    </nav>
+
+    <!-- CONTENIDO -->
+    <div class="panel-content">
+
+      <div class="d-flex align-items-center justify-content-between mb-4 flex-wrap gap-2">
+        <div>
+          <h1 class="h4 mb-0" style="font-family:var(--font-heading)">Solicitudes de adopción</h1>
+          <p class="text-muted mb-0" style="font-size:.88rem">Panel de gestión · Refugio Patitas Felices</p>
+        </div>
+        <button type="button" class="btn btn-coral btn-sm px-3">Exportar</button>
+      </div>
+
+      <!-- MÉTRICAS -->
+      <div class="row g-3 mb-4" role="region" aria-label="Resumen de solicitudes">
+        <div class="col-6 col-lg-3">
+          <div class="metric-card">
+            <div class="metric-icon blue" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><path d="M9 11l3 3L22 4"/><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/></svg>
+            </div>
+            <div><div class="metric-number">24</div><div class="metric-label">Total</div></div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="metric-card">
+            <div class="metric-icon coral" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="16"/><line x1="8" y1="12" x2="16" y2="12"/></svg>
+            </div>
+            <div><div class="metric-number">3</div><div class="metric-label">Nuevas</div></div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="metric-card">
+            <div class="metric-icon amber" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+            </div>
+            <div><div class="metric-number">8</div><div class="metric-label">En revisión</div></div>
+          </div>
+        </div>
+        <div class="col-6 col-lg-3">
+          <div class="metric-card">
+            <div class="metric-icon green" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" xmlns="http://www.w3.org/2000/svg"><polyline points="20 6 9 17 4 12"/></svg>
+            </div>
+            <div><div class="metric-number">13</div><div class="metric-label">Aprobadas</div></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- TABLA -->
+      <div class="panel-table-card">
+        <div class="table-header">
+          <h2 class="table-title">Listado de solicitudes</h2>
+          <nav aria-label="Filtrar solicitudes por estado">
+            <ul class="nav panel-pills flex-wrap gap-1" id="filtros-estado" role="tablist">
+              <li class="nav-item" role="presentation">
+                <button class="nav-link active" data-filter="todas" role="tab" aria-selected="true">Todas <span class="ms-1 opacity-75" style="font-size:.75rem">24</span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-filter="nueva" role="tab" aria-selected="false">Nuevas <span class="ms-1 opacity-75" style="font-size:.75rem">3</span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-filter="revision" role="tab" aria-selected="false">En revisión <span class="ms-1 opacity-75" style="font-size:.75rem">8</span></button>
+              </li>
+              <li class="nav-item" role="presentation">
+                <button class="nav-link" data-filter="aprobada" role="tab" aria-selected="false">Aprobadas <span class="ms-1 opacity-75" style="font-size:.75rem">13</span></button>
+              </li>
+            </ul>
+          </nav>
+        </div>
+
+        <!-- Tabla desktop -->
+        <div class="d-none d-md-block">
+          <div class="table-responsive">
+            <table class="table table-hover mb-0" id="tabla-solicitudes" aria-label="Solicitudes de adopción">
+              <thead>
+                <tr>
+                  <th scope="col">Solicitante</th>
+                  <th scope="col">Mascota</th>
+                  <th scope="col">Fecha</th>
+                  <th scope="col">Estado</th>
+                  <th scope="col">Acciones</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr data-estado="nueva">
+                  <td><div class="fw-semibold">Valentina García</div><div class="text-muted" style="font-size:.8rem">vgarcia@email.com</div></td>
+                  <td><div class="fw-semibold" style="font-size:.9rem">Luna</div><div class="text-muted" style="font-size:.78rem">Perro · Mediano</div></td>
+                  <td style="font-size:.88rem">06/06/2026</td>
+                  <td><span class="badge-estado badge-nueva">Nueva</span></td>
+                  <td><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></td>
+                </tr>
+                <tr data-estado="nueva">
+                  <td><div class="fw-semibold">Mateo Rodríguez</div><div class="text-muted" style="font-size:.8rem">mrodriguez@email.com</div></td>
+                  <td><div class="fw-semibold" style="font-size:.9rem">Michi</div><div class="text-muted" style="font-size:.78rem">Gato · Pequeño</div></td>
+                  <td style="font-size:.88rem">05/06/2026</td>
+                  <td><span class="badge-estado badge-nueva">Nueva</span></td>
+                  <td><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></td>
+                </tr>
+                <tr data-estado="nueva">
+                  <td><div class="fw-semibold">Lucía Fernández</div><div class="text-muted" style="font-size:.8rem">lfernandez@email.com</div></td>
+                  <td><div class="fw-semibold" style="font-size:.9rem">Nala</div><div class="text-muted" style="font-size:.78rem">Gata · Pequeña</div></td>
+                  <td style="font-size:.88rem">04/06/2026</td>
+                  <td><span class="badge-estado badge-nueva">Nueva</span></td>
+                  <td><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></td>
+                </tr>
+                <tr data-estado="revision">
+                  <td><div class="fw-semibold">Santiago López</div><div class="text-muted" style="font-size:.8rem">slopez@email.com</div></td>
+                  <td><div class="fw-semibold" style="font-size:.9rem">Rocky</div><div class="text-muted" style="font-size:.78rem">Perro · Grande</div></td>
+                  <td style="font-size:.88rem">02/06/2026</td>
+                  <td><span class="badge-estado badge-revision">En revisión</span></td>
+                  <td><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></td>
+                </tr>
+                <tr data-estado="revision">
+                  <td><div class="fw-semibold">Camila Suárez</div><div class="text-muted" style="font-size:.8rem">csuarez@email.com</div></td>
+                  <td><div class="fw-semibold" style="font-size:.9rem">Trufa</div><div class="text-muted" style="font-size:.78rem">Perra · Pequeña</div></td>
+                  <td style="font-size:.88rem">31/05/2026</td>
+                  <td><span class="badge-estado badge-revision">En revisión</span></td>
+                  <td><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></td>
+                </tr>
+                <tr data-estado="aprobada">
+                  <td><div class="fw-semibold">Tomás Herrera</div><div class="text-muted" style="font-size:.8rem">therrera@email.com</div></td>
+                  <td><div class="fw-semibold" style="font-size:.9rem">Bono</div><div class="text-muted" style="font-size:.78rem">Perro · Grande</div></td>
+                  <td style="font-size:.88rem">28/05/2026</td>
+                  <td><span class="badge-estado badge-aprobada">Aprobada</span></td>
+                  <td><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA">Rechazar</button></div></td>
+                </tr>
+                <tr data-estado="aprobada">
+                  <td><div class="fw-semibold">Ana Martínez</div><div class="text-muted" style="font-size:.8rem">amartinez@email.com</div></td>
+                  <td><div class="fw-semibold" style="font-size:.9rem">Cleo</div><div class="text-muted" style="font-size:.78rem">Gata · Pequeña</div></td>
+                  <td style="font-size:.88rem">25/05/2026</td>
+                  <td><span class="badge-estado badge-aprobada">Aprobada</span></td>
+                  <td><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA">Rechazar</button></div></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+
+        <!-- Cards mobile -->
+        <div class="d-md-none p-3" id="cards-solicitudes-mobile">
+          <div class="solicitud-card-mobile" data-estado="nueva"><div class="sol-header"><span class="sol-nombre">Valentina García</span><span class="badge-estado badge-nueva">Nueva</span></div><p class="sol-mascota">Luna · Perro mediano</p><div class="d-flex align-items-center justify-content-between"><span class="sol-fecha">06/06/2026</span><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></div></div>
+          <div class="solicitud-card-mobile" data-estado="nueva"><div class="sol-header"><span class="sol-nombre">Mateo Rodríguez</span><span class="badge-estado badge-nueva">Nueva</span></div><p class="sol-mascota">Michi · Gato pequeño</p><div class="d-flex align-items-center justify-content-between"><span class="sol-fecha">05/06/2026</span><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></div></div>
+          <div class="solicitud-card-mobile" data-estado="nueva"><div class="sol-header"><span class="sol-nombre">Lucía Fernández</span><span class="badge-estado badge-nueva">Nueva</span></div><p class="sol-mascota">Nala · Gata pequeña</p><div class="d-flex align-items-center justify-content-between"><span class="sol-fecha">04/06/2026</span><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></div></div>
+          <div class="solicitud-card-mobile" data-estado="revision"><div class="sol-header"><span class="sol-nombre">Santiago López</span><span class="badge-estado badge-revision">En revisión</span></div><p class="sol-mascota">Rocky · Perro grande</p><div class="d-flex align-items-center justify-content-between"><span class="sol-fecha">02/06/2026</span><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:var(--color-secondary-light);color:var(--color-secondary-dark);border:1px solid var(--color-secondary)">Aprobar</button></div></div></div>
+          <div class="solicitud-card-mobile" data-estado="aprobada"><div class="sol-header"><span class="sol-nombre">Tomás Herrera</span><span class="badge-estado badge-aprobada">Aprobada</span></div><p class="sol-mascota">Bono · Perro grande</p><div class="d-flex align-items-center justify-content-between"><span class="sol-fecha">28/05/2026</span><div class="d-flex gap-1"><button type="button" class="btn btn-sm btn-outline-secondary" style="border-radius:6px;font-size:.78rem">Ver</button><button type="button" class="btn btn-sm" style="border-radius:6px;font-size:.78rem;background:#FEF2F2;color:#DC2626;border:1px solid #FECACA">Rechazar</button></div></div></div>
+        </div>
+
+        <div class="d-flex align-items-center justify-content-between flex-wrap gap-2 p-3 border-top" style="border-color:#f0f0f0!important">
+          <p class="text-muted mb-0" style="font-size:.82rem">Mostrando 7 de 24 solicitudes</p>
+          <nav aria-label="Paginación del panel">
+            <ul class="pagination pagination-sm mb-0">
+              <li class="page-item disabled"><a class="page-link" href="#" tabindex="-1">‹</a></li>
+              <li class="page-item active" aria-current="page"><a class="page-link" href="#">1</a></li>
+              <li class="page-item"><a class="page-link" href="#">2</a></li>
+              <li class="page-item"><a class="page-link" href="#">3</a></li>
+              <li class="page-item"><a class="page-link" href="#">›</a></li>
+            </ul>
+          </nav>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="../assets/js/main.js"></script>
+  <script>
+    document.querySelectorAll('#filtros-estado .nav-link').forEach(btn => {
+      btn.addEventListener('click', function(e) {
+        e.preventDefault();
+        document.querySelectorAll('#filtros-estado .nav-link').forEach(b => { b.classList.remove('active'); b.setAttribute('aria-selected','false'); });
+        this.classList.add('active'); this.setAttribute('aria-selected','true');
+        const filter = this.dataset.filter;
+        document.querySelectorAll('#tabla-solicitudes tbody tr').forEach(row => { row.style.display = (filter==='todas'||row.dataset.estado===filter)?'':'none'; });
+        document.querySelectorAll('.solicitud-card-mobile').forEach(card => { card.style.display = (filter==='todas'||card.dataset.estado===filter)?'':'none'; });
+      });
+    });
+  </script>
+</body>
+</html>
